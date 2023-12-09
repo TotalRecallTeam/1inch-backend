@@ -1,38 +1,9 @@
 import { ethers } from "ethers";
+import { dotenv } from "dotenv";
 import { FusionSDK, NetworkEnum } from "@1inch/fusion-sdk";
-import dotenv from "dotenv";
+import { getQuote, placeOrder } from "./one_inch_utils";
 
 dotenv.config();
-
-function isSupportedChain(chain_id) {
-  if (chain_id == NetworkEnum.ARBITRUM) {
-    return true;
-  }
-  return false;
-}
-
-async function getQuote(sdk, from_token_address, to_token_address, amount) {
-  const params = {
-    fromTokenAddress: from_token_address,
-    toTokenAddress: to_token_address,
-    amount: amount,
-  };
-
-  const quote = await sdk.getQuote(params);
-
-  return quote;
-}
-
-async function placeOrder(sdk, quote, wallet_address) {
-  const params = {
-    fromTokenAddress: quote.params.fromTokenAddress,
-    toTokenAddress: quote.params.toTokenAddress,
-    amount: quote.params.amount,
-    walletAddress: wallet_address,
-  };
-
-  sdk.placeOrder(params).then(console.log);
-}
 
 async function main() {
   const one_inch_api_key = process.env.ONE_INCH_API_KEY;
@@ -62,7 +33,9 @@ async function main() {
     amount
   );
 
-  await placeOrder(one_inch_sdk, quote, wallet_address);
+  const order = await placeOrder(one_inch_sdk, quote, wallet_address);
+
+  console.log(order);
 }
 
 main();
