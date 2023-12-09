@@ -1,0 +1,33 @@
+{
+  "name": "1inch-backend",
+  "version": "1.0.0",
+  "description": "Token swap backend created using 1inch Fusion to execute swaps without spending gas or risking being front-run.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TotalRecallTeam/1inch-backend.git"
+  },
+  "keywords": [
+    "1inch",
+    "evm",
+    "ethereum",
+    "blockchain",
+    "erc20"
+  ],
+  "author": "SaudxInu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TotalRecallTeam/1inch-backend/issues"
+  },
+  "homepage": "https://github.com/TotalRecallTeam/1inch-backend#readme",
+  "dependencies": {
+    "@1inch/fusion-sdk": "^0.1.12",
+    "@metamask/sdk-react": "^0.14.1",
+    "dotenv": "^16.3.1",
+    "ethers": "5.7.2"
+  }
+}
